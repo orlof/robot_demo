@@ -1,0 +1,7 @@
+decorator
+docutils
+psutil
+robotframework
+robotframework-selenium2library
+selenium
+Pillow
