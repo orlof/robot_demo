@@ -55,9 +55,9 @@ Git [latest]
 Go to repository and run the test runner script
 
     cd repository_name
-    testrunner.bat (nightly|dev) smokeNOTbug
+    testrunner.bat (nightly|uat) smokeNOTbug
        or
-    ./testrunner.sh (nightly|dev) smokeNOTbug
+    ./testrunner.sh (nightly|uat) smokeNOTbug
 
 ### Test Development (TODO) ###
 

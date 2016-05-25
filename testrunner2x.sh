@@ -13,7 +13,7 @@ echo "# Environment: $1"
 echo "# Included   : $2"
 echo "#######################################"
 
-pybot --outputdir reports --noncritical BUG --include $2 -P lib --variable BROWSER:ff --variable ENVIRONMENT:$1 tests
+pybot --outputdir reports --noncritical BUG --include $2 -P lib --variable BROWSER:ff tests/variables/$1.yaml tests
 
 if [ $? -eq 0 ]; then
 	exit 0
@@ -26,7 +26,7 @@ echo "#######################################"
 echo "# Running again the tests that failed #"
 echo "#######################################"
 echo
-pybot --outputdir reports --noncritical BUG --nostatusrc --rerunfailed reports/output.xml --output rerun.xml -P lib --variable BROWSER:ff --variable ENVIRONMENT:$1 tests
+pybot --outputdir reports --noncritical BUG --nostatusrc --rerunfailed reports/output.xml --output rerun.xml -P lib --variable BROWSER:ff tests/variables/$1.yaml tests
 
 cp reports/log.html  reports/second_run_log.html
 

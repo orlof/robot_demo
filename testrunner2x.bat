@@ -13,7 +13,7 @@ echo # Environment: %1
 echo # Included   : %2
 echo #######################################
 
-call pybot --outputdir reports --include %2 -P lib --noncritical BUG --variable BROWSER:ff --variable ENVIRONMENT:%1 tests
+call pybot --outputdir reports --include %2 -P lib --noncritical BUG --variable BROWSER:ff --variablefile tests\variables\%1.yaml tests
 
 IF %ERRORLEVEL% EQU 0 EXIT /B 0
 
@@ -23,7 +23,7 @@ echo #######################################
 echo # Running again the tests that failed
 echo #######################################
 
-call pybot --outputdir reports --rerunfailed reports\output.xml --noncritical BUG --output rerun.xml -P lib --variable BROWSER:ff --variable ENVIRONMENT:%1 tests
+call pybot --outputdir reports --rerunfailed reports\output.xml --noncritical BUG --output rerun.xml -P lib --variable BROWSER:ff --variablefile tests\variables\%1.yaml tests
 set RC=%ERRORLEVEL%
 
 copy reports\log.html  reports\second_run_log.html

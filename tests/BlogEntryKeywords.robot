@@ -1,5 +1,4 @@
 *** Setting ***
-Library           Selenium2Library
 Library           BlogEntryUtils
 Resource          BlogEntryAPI.robot
 
@@ -10,7 +9,7 @@ Resource          BlogEntryAPI.robot
 ###############################
 
 As ${me}, login
-    Login    ${me}
+    Login    &{Account.${me}}
 
 As ${me}, logout
     Logout

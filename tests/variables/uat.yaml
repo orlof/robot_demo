@@ -1,0 +1,11 @@
+SeleniumTimeout:  5
+Url:  http://localhost/uat/
+Account:
+  Tommy:
+    Name: Tommy
+    Login: tommy
+    Password: secret
+  Gina:
+    Name: Gina
+    Login: gina
+    Password: secret

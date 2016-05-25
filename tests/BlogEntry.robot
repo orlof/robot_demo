@@ -4,7 +4,7 @@ Suite Teardown    Cleanup Environment
 Test Setup        Prepare Browser
 Test Teardown     Cleanup Browser
 Test Timeout      4 minutes
-Resource          Adaptation.robot
+Resource          BlogEntryKeywords.robot
 
 *** Test Case ***
 Tommy creates blog entry

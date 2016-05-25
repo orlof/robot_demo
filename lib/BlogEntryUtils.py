@@ -81,7 +81,7 @@ class BlogEntryUtils:
         print("*INFO* %s=%s [%s]" % (variable, value, scope))
 
     def close_os_browsers(self):
-        selenium = BuiltIn().get_library_instance("Selenium2Library")
+        selenium = BuiltIn().get_library_instance("Selenium2LibraryStub")
 
         try:
             selenium.close_all_browsers()

@@ -1,26 +1,17 @@
 *** Setting ***
-Library           Selenium2Library
+Library           Selenium2LibraryStub
 Library           BlogEntryUtils
-
-*** Variable ***
-${ENVIRONMENT}    nightly
-${BROWSER}    ff
-${SeleniumTimeout}    30
-
-${Account_Login_dev}       teppo
-${Account_Password_dev}    secret
-${URL}     http://XYZ/
 
 *** Keyword ***
 Login
-    [Arguments]    ${account}
-    Input text    email    ${Account_Login_${account}}
-    Input text    password    ${Account_Password_${account}}
+    [Arguments]    &{Account}
+    Input text    login    ${Account.Login}
+    Input text    password    ${Account.Password}
     Click Button    LoginButton
     Wait Until Element Is Visible    LogoutButton
 
 Logout
-    Go To   ${URL}
+    Go To   ${Url}
     Wait Until Element Is Visible    xpath=//button[@id="LogoutButton" or @id="LoginButton"]
     ${is_logged_in}=    Run Keyword And Return Status    Element Should Be Visible    LogoutButton
     Run Keyword If    ${is_logged_in}    Click Element    LogoutButton
@@ -34,10 +25,10 @@ Create Blog Entry
     [Return]    ${blog}
 
 Go to Blog Page
-    Go To    ${URL}blog
+    Go To    ${Url}blog
 
 Open Blog Entry Form
-    Go To    ${URL}blog/new_entry
+    Go To    ${Url}blog/new_entry
     ${blog}=    Create Data Dict
     [Return]    ${blog}
 
@@ -72,21 +63,20 @@ Verify Blog Entry Message
 ###############################
 
 Prepare Environment
-    Set Suite Variable    ${URL}    ${Environment_Url_${ENVIRONMENT}}
     Prepare Browser
     ${revision}=    Get Text   revision-info
     Log    ${revision}
 
 Cleanup Environment
-    No Operation
+    Cleanup Browser
 
 Prepare browser
     Set Selenium Timeout    ${SeleniumTimeout}
     Set Screenshot Directory    reports/pics    True
     Open Browser    about:blank     browser=${BROWSER}
     Delete All Cookies
-    Go To    ${URL}
-    Location Should Contain    ${URL}
+    Go To    ${Url}
+    Location Should Contain    ${Url}
     Maximize Browser Window
 
 Cleanup Browser
@@ -94,35 +84,31 @@ Cleanup Browser
 
 Prepare account
     [Arguments]    ${name}
-    Prepare account with credentials    ${name}    Robot.${name}@mailinator.com    secret
+    Prepare account with credentials    &{Account.${name}}
 
 Prepare account with credentials
-    [Arguments]    ${name}  ${email}  ${password}
-    Set Suite Variable    ${Account_Login_${name}}    ${email}
-    Set Suite Variable    ${Account_Password_${name}}    ${password}
-
-    Login or Register    ${name}    ${Account_Login_${name}}    ${Account_Password_${name}}
+    [Arguments]    &{Account}
+    Log Many  &{Account}
+    Login or Register    &{Account}
     Wait Until Element Is Visible    LogoutButton
     Click Element    LogoutButton
 
 Login or Register
-    [Arguments]    ${name}    ${email}    ${password}
+    [Arguments]    ${Name}    ${Login}    ${Password}
     Logout
 
-    Wait Until Element is Visible    email
-    Input text    email    ${email}
-    Input text    password    ${password}
+    Wait Until Element is Visible    login
+    Input text    login    ${Login}
+    Input text    password    ${Password}
     Click Button    LoginButton
 
     Wait Until Element Is Visible    xpath=//*[@id="LogoutButton" or @class="error-wrapper"]
     ${login_ok}=    Run Keyword And Return Status    Page Should Contain Element    LogoutButton
     Return From Keyword If    ${login_ok}
 
-    Click Button    registerWithEmail
-    Input Text    email    ${email}
-    Input Text    reEmail    ${email}
+    Click Button    register
+    Input Text    name    ${Name}
+    Input Text    login    ${Login}
     Input Text    password    ${password}
-    Input Text    rePassword    ${password}
-    Input Text    username    ${name}
     Click Button    xpath=//button[contains(@class, "registerButton")]
     Wait Until Element Is Visible    LogoutButton

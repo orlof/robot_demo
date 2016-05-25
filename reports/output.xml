@@ -1,0 +1,1136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20160525 15:18:12.725" generator="Robot 2.9.1 (Python 2.7.6 on linux2)">
+<suite source="/home/teppo/repo/robot_demo/tests" id="s1" name="Tests">
+<suite source="/home/teppo/repo/robot_demo/tests/BlogEntry.robot" id="s1-s1" name="BlogEntry">
+<kw type="setup" name="Prepare Environment and Setup Accounts">
+<kw name="Prepare Environment" library="BlogEntryAPI">
+<kw name="Prepare browser" library="BlogEntryAPI">
+<kw name="Set Selenium Timeout" library="Selenium2LibraryStub">
+<arguments>
+<arg>${SeleniumTimeout}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.791" starttime="20160525 15:18:12.790"></status>
+</kw>
+<kw name="Set Screenshot Directory" library="Selenium2LibraryStub">
+<arguments>
+<arg>reports/pics</arg>
+<arg>True</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.791" starttime="20160525 15:18:12.791"></status>
+</kw>
+<kw name="Open Browser" library="Selenium2LibraryStub">
+<arguments>
+<arg>about:blank</arg>
+<arg>browser=${BROWSER}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.792" starttime="20160525 15:18:12.791"></status>
+</kw>
+<kw name="Delete All Cookies" library="Selenium2LibraryStub">
+<status status="PASS" endtime="20160525 15:18:12.792" starttime="20160525 15:18:12.792"></status>
+</kw>
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.792" starttime="20160525 15:18:12.792"></status>
+</kw>
+<kw name="Location Should Contain" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.793" starttime="20160525 15:18:12.792"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2LibraryStub">
+<status status="PASS" endtime="20160525 15:18:12.793" starttime="20160525 15:18:12.793"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.793" starttime="20160525 15:18:12.790"></status>
+</kw>
+<kw name="Get Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>revision-info</arg>
+</arguments>
+<assign>
+<var>${revision}</var>
+</assign>
+<msg timestamp="20160525 15:18:12.794" level="INFO">${revision} = None</msg>
+<status status="PASS" endtime="20160525 15:18:12.794" starttime="20160525 15:18:12.793"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${revision}</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.794" level="INFO">None</msg>
+<status status="PASS" endtime="20160525 15:18:12.794" starttime="20160525 15:18:12.794"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.794" starttime="20160525 15:18:12.790"></status>
+</kw>
+<kw name="Prepare account" library="BlogEntryAPI">
+<arguments>
+<arg>Tommy</arg>
+</arguments>
+<kw name="Prepare account with credentials" library="BlogEntryAPI">
+<arguments>
+<arg>&amp;{Account.${name}}</arg>
+</arguments>
+<kw name="Log Many" library="BuiltIn">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>&amp;{Account}</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.796" level="INFO">Login=tommy</msg>
+<msg timestamp="20160525 15:18:12.796" level="INFO">Password=secret</msg>
+<msg timestamp="20160525 15:18:12.796" level="INFO">Name=Tommy</msg>
+<status status="PASS" endtime="20160525 15:18:12.796" starttime="20160525 15:18:12.795"></status>
+</kw>
+<kw name="Login or Register" library="BlogEntryAPI">
+<arguments>
+<arg>&amp;{Account}</arg>
+</arguments>
+<kw name="Logout" library="BlogEntryAPI">
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.797" starttime="20160525 15:18:12.797"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//button[@id="LogoutButton" or @id="LoginButton"]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.797" starttime="20160525 15:18:12.797"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<assign>
+<var>${is_logged_in}</var>
+</assign>
+<kw name="Element Should Be Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.798" starttime="20160525 15:18:12.798"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.798" level="INFO">${is_logged_in} = True</msg>
+<status status="PASS" endtime="20160525 15:18:12.798" starttime="20160525 15:18:12.797"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${is_logged_in}</arg>
+<arg>Click Element</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.799" starttime="20160525 15:18:12.799"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.799" starttime="20160525 15:18:12.798"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.799" starttime="20160525 15:18:12.796"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>login</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.800" starttime="20160525 15:18:12.800"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>login</arg>
+<arg>${Login}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.800" starttime="20160525 15:18:12.800"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>password</arg>
+<arg>${Password}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.801" starttime="20160525 15:18:12.800"></status>
+</kw>
+<kw name="Click Button" library="Selenium2LibraryStub">
+<arguments>
+<arg>LoginButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.801" starttime="20160525 15:18:12.801"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//*[@id="LogoutButton" or @class="error-wrapper"]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.801" starttime="20160525 15:18:12.801"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Page Should Contain Element</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<assign>
+<var>${login_ok}</var>
+</assign>
+<kw name="Page Should Contain Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.802" starttime="20160525 15:18:12.802"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.802" level="INFO">${login_ok} = True</msg>
+<status status="PASS" endtime="20160525 15:18:12.802" starttime="20160525 15:18:12.801"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>${login_ok}</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.802" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20160525 15:18:12.802" starttime="20160525 15:18:12.802"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.803" starttime="20160525 15:18:12.796"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.803" starttime="20160525 15:18:12.803"></status>
+</kw>
+<kw name="Click Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.803" starttime="20160525 15:18:12.803"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.803" starttime="20160525 15:18:12.795"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.804" starttime="20160525 15:18:12.794"></status>
+</kw>
+<kw name="Prepare account" library="BlogEntryAPI">
+<arguments>
+<arg>Gina</arg>
+</arguments>
+<kw name="Prepare account with credentials" library="BlogEntryAPI">
+<arguments>
+<arg>&amp;{Account.${name}}</arg>
+</arguments>
+<kw name="Log Many" library="BuiltIn">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>&amp;{Account}</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.805" level="INFO">Login=gina</msg>
+<msg timestamp="20160525 15:18:12.805" level="INFO">Password=secret</msg>
+<msg timestamp="20160525 15:18:12.805" level="INFO">Name=Gina</msg>
+<status status="PASS" endtime="20160525 15:18:12.805" starttime="20160525 15:18:12.805"></status>
+</kw>
+<kw name="Login or Register" library="BlogEntryAPI">
+<arguments>
+<arg>&amp;{Account}</arg>
+</arguments>
+<kw name="Logout" library="BlogEntryAPI">
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.806" starttime="20160525 15:18:12.806"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//button[@id="LogoutButton" or @id="LoginButton"]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.806" starttime="20160525 15:18:12.806"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<assign>
+<var>${is_logged_in}</var>
+</assign>
+<kw name="Element Should Be Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.807" starttime="20160525 15:18:12.807"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.807" level="INFO">${is_logged_in} = True</msg>
+<status status="PASS" endtime="20160525 15:18:12.807" starttime="20160525 15:18:12.807"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${is_logged_in}</arg>
+<arg>Click Element</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.808" starttime="20160525 15:18:12.808"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.808" starttime="20160525 15:18:12.807"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.808" starttime="20160525 15:18:12.805"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>login</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.809" starttime="20160525 15:18:12.808"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>login</arg>
+<arg>${Login}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.809" starttime="20160525 15:18:12.809"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>password</arg>
+<arg>${Password}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.809" starttime="20160525 15:18:12.809"></status>
+</kw>
+<kw name="Click Button" library="Selenium2LibraryStub">
+<arguments>
+<arg>LoginButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.810" starttime="20160525 15:18:12.810"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//*[@id="LogoutButton" or @class="error-wrapper"]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.810" starttime="20160525 15:18:12.810"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Page Should Contain Element</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<assign>
+<var>${login_ok}</var>
+</assign>
+<kw name="Page Should Contain Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.811" starttime="20160525 15:18:12.811"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.811" level="INFO">${login_ok} = True</msg>
+<status status="PASS" endtime="20160525 15:18:12.811" starttime="20160525 15:18:12.810"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>${login_ok}</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.811" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20160525 15:18:12.811" starttime="20160525 15:18:12.811"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.812" starttime="20160525 15:18:12.805"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.812" starttime="20160525 15:18:12.812"></status>
+</kw>
+<kw name="Click Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.812" starttime="20160525 15:18:12.812"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.812" starttime="20160525 15:18:12.804"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.813" starttime="20160525 15:18:12.804"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.813" starttime="20160525 15:18:12.789"></status>
+</kw>
+<test id="s1-s1-t1" timeout="4 minutes" name="Tommy creates blog entry">
+<kw type="setup" name="Prepare browser" library="BlogEntryAPI">
+<kw name="Set Selenium Timeout" library="Selenium2LibraryStub">
+<arguments>
+<arg>${SeleniumTimeout}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.814" starttime="20160525 15:18:12.814"></status>
+</kw>
+<kw name="Set Screenshot Directory" library="Selenium2LibraryStub">
+<arguments>
+<arg>reports/pics</arg>
+<arg>True</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.815" starttime="20160525 15:18:12.814"></status>
+</kw>
+<kw name="Open Browser" library="Selenium2LibraryStub">
+<arguments>
+<arg>about:blank</arg>
+<arg>browser=${BROWSER}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.815" starttime="20160525 15:18:12.815"></status>
+</kw>
+<kw name="Delete All Cookies" library="Selenium2LibraryStub">
+<status status="PASS" endtime="20160525 15:18:12.815" starttime="20160525 15:18:12.815"></status>
+</kw>
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.816" starttime="20160525 15:18:12.816"></status>
+</kw>
+<kw name="Location Should Contain" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.816" starttime="20160525 15:18:12.816"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2LibraryStub">
+<status status="PASS" endtime="20160525 15:18:12.817" starttime="20160525 15:18:12.816"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.817" starttime="20160525 15:18:12.813"></status>
+</kw>
+<kw name="As Tommy, login" library="BlogEntryKeywords">
+<kw name="Login" library="BlogEntryAPI">
+<arguments>
+<arg>&amp;{Account.${me}}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>login</arg>
+<arg>${Account.Login}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.818" starttime="20160525 15:18:12.818"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>password</arg>
+<arg>${Account.Password}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.819" starttime="20160525 15:18:12.818"></status>
+</kw>
+<kw name="Click Button" library="Selenium2LibraryStub">
+<arguments>
+<arg>LoginButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.819" starttime="20160525 15:18:12.819"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.820" starttime="20160525 15:18:12.819"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.820" starttime="20160525 15:18:12.817"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.820" starttime="20160525 15:18:12.817"></status>
+</kw>
+<kw name="As Tommy, create blog entry" library="BlogEntryKeywords">
+<kw name="Create Blog Entry" library="BlogEntryAPI">
+<assign>
+<var>${blog}</var>
+</assign>
+<kw name="Open Blog Entry Form" library="BlogEntryAPI">
+<assign>
+<var>${blog}</var>
+</assign>
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}blog/new_entry</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.822" starttime="20160525 15:18:12.821"></status>
+</kw>
+<kw name="Create Data Dict" library="BlogEntryUtils">
+<assign>
+<var>${blog}</var>
+</assign>
+<msg timestamp="20160525 15:18:12.822" level="INFO">{}</msg>
+<msg timestamp="20160525 15:18:12.823" level="INFO">${blog} = {}</msg>
+<status status="PASS" endtime="20160525 15:18:12.823" starttime="20160525 15:18:12.822"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.823" level="INFO">${blog} = {}</msg>
+<status status="PASS" endtime="20160525 15:18:12.823" starttime="20160525 15:18:12.821"></status>
+</kw>
+<kw name="Set Blog Entry Title" library="BlogEntryAPI">
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${blog.title}</var>
+</assign>
+<kw name="Set Textfield" library="BlogEntryAPI">
+<arguments>
+<arg>title</arg>
+<arg>${value}</arg>
+</arguments>
+<assign>
+<var>${value}</var>
+</assign>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${value}"=="NDEF"</arg>
+<arg>Generate Test Data</arg>
+<arg>value=text</arg>
+</arguments>
+<kw name="Generate Test Data" library="BlogEntryUtils">
+<arguments>
+<arg>value=text</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.826" level="INFO">${value} = RFTAQTBOP3</msg>
+<msg timestamp="20160525 15:18:12.826" level="INFO">value=RFTAQTBOP3 [test]</msg>
+<msg timestamp="20160525 15:18:12.826" level="INFO">['RFTAQTBOP3']</msg>
+<status status="PASS" endtime="20160525 15:18:12.826" starttime="20160525 15:18:12.825"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.826" starttime="20160525 15:18:12.824"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>${element}</arg>
+<arg>${value}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.826" starttime="20160525 15:18:12.826"></status>
+</kw>
+<kw name="Press Key" library="Selenium2LibraryStub">
+<arguments>
+<arg>${element}</arg>
+<arg>\t</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.827" starttime="20160525 15:18:12.826"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.827" level="INFO">${value} = RFTAQTBOP3</msg>
+<status status="PASS" endtime="20160525 15:18:12.827" starttime="20160525 15:18:12.824"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.827" level="INFO">${blog.title} = None</msg>
+<status status="PASS" endtime="20160525 15:18:12.827" starttime="20160525 15:18:12.823"></status>
+</kw>
+<kw name="Set Blog Entry Message" library="BlogEntryAPI">
+<arguments>
+<arg>${message}</arg>
+</arguments>
+<assign>
+<var>${blog.message}</var>
+</assign>
+<kw name="Set Textfield" library="BlogEntryAPI">
+<arguments>
+<arg>message</arg>
+<arg>${value}</arg>
+</arguments>
+<assign>
+<var>${value}</var>
+</assign>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${value}"=="NDEF"</arg>
+<arg>Generate Test Data</arg>
+<arg>value=text</arg>
+</arguments>
+<kw name="Generate Test Data" library="BlogEntryUtils">
+<arguments>
+<arg>value=text</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.829" level="INFO">${value} = 82G4048PIZ</msg>
+<msg timestamp="20160525 15:18:12.830" level="INFO">value=82G4048PIZ [test]</msg>
+<msg timestamp="20160525 15:18:12.830" level="INFO">['82G4048PIZ']</msg>
+<status status="PASS" endtime="20160525 15:18:12.830" starttime="20160525 15:18:12.829"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.830" starttime="20160525 15:18:12.828"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>${element}</arg>
+<arg>${value}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.830" starttime="20160525 15:18:12.830"></status>
+</kw>
+<kw name="Press Key" library="Selenium2LibraryStub">
+<arguments>
+<arg>${element}</arg>
+<arg>\t</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.831" starttime="20160525 15:18:12.830"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.831" level="INFO">${value} = 82G4048PIZ</msg>
+<status status="PASS" endtime="20160525 15:18:12.831" starttime="20160525 15:18:12.828"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.831" level="INFO">${blog.message} = None</msg>
+<status status="PASS" endtime="20160525 15:18:12.831" starttime="20160525 15:18:12.827"></status>
+</kw>
+<kw name="Submit Blog Entry Form" library="BlogEntryAPI">
+<kw name="Click Button" library="Selenium2LibraryStub">
+<arguments>
+<arg>SubmitButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.832" starttime="20160525 15:18:12.832"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.832" starttime="20160525 15:18:12.831"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.832" level="INFO">${blog} = {'message': None, 'title': None}</msg>
+<status status="PASS" endtime="20160525 15:18:12.832" starttime="20160525 15:18:12.821"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${blog}</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.833" level="INFO">${blog} = {'message': None, 'title': None}</msg>
+<status status="PASS" endtime="20160525 15:18:12.833" starttime="20160525 15:18:12.832"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.833" starttime="20160525 15:18:12.820"></status>
+</kw>
+<kw name="As Tommy, verify blog entry" library="BlogEntryKeywords">
+<kw name="Go to Blog Page" library="BlogEntryAPI">
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}blog</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.834" starttime="20160525 15:18:12.834"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.834" starttime="20160525 15:18:12.833"></status>
+</kw>
+<kw name="Verify Blog Entry Title" library="BlogEntryAPI">
+<arguments>
+<arg>${blog.title}</arg>
+</arguments>
+<kw name="Page Should Contain Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//div[@id="title" and contains(text(), "${value}")]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.835" starttime="20160525 15:18:12.835"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.835" starttime="20160525 15:18:12.834"></status>
+</kw>
+<kw name="Verify Blog Entry Message" library="BlogEntryAPI">
+<arguments>
+<arg>${blog.message}</arg>
+</arguments>
+<kw name="Page Should Contain Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//div[@id="message" and contains(text(), "${value}")]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.836" starttime="20160525 15:18:12.836"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.836" starttime="20160525 15:18:12.835"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.836" starttime="20160525 15:18:12.833"></status>
+</kw>
+<kw name="As Tommy, logout" library="BlogEntryKeywords">
+<kw name="Logout" library="BlogEntryAPI">
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.837" starttime="20160525 15:18:12.837"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//button[@id="LogoutButton" or @id="LoginButton"]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.838" starttime="20160525 15:18:12.837"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<assign>
+<var>${is_logged_in}</var>
+</assign>
+<kw name="Element Should Be Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.839" starttime="20160525 15:18:12.838"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.839" level="INFO">${is_logged_in} = True</msg>
+<status status="PASS" endtime="20160525 15:18:12.839" starttime="20160525 15:18:12.838"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${is_logged_in}</arg>
+<arg>Click Element</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.839" starttime="20160525 15:18:12.839"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.839" starttime="20160525 15:18:12.839"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.840" starttime="20160525 15:18:12.837"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.840" starttime="20160525 15:18:12.836"></status>
+</kw>
+<kw type="teardown" name="Cleanup Browser" library="BlogEntryAPI">
+<kw name="Close Os Browsers" library="BlogEntryUtils">
+<status status="PASS" endtime="20160525 15:18:12.885" starttime="20160525 15:18:12.840"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.885" starttime="20160525 15:18:12.840"></status>
+</kw>
+<tags>
+<tag>GOOD</tag>
+<tag>SMOKE</tag>
+</tags>
+<status status="PASS" endtime="20160525 15:18:12.886" critical="yes" starttime="20160525 15:18:12.813"></status>
+</test>
+<test id="s1-s1-t2" timeout="4 minutes" name="Gina can see Tommys blog entry">
+<kw type="setup" name="Prepare browser" library="BlogEntryAPI">
+<kw name="Set Selenium Timeout" library="Selenium2LibraryStub">
+<arguments>
+<arg>${SeleniumTimeout}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.887" starttime="20160525 15:18:12.887"></status>
+</kw>
+<kw name="Set Screenshot Directory" library="Selenium2LibraryStub">
+<arguments>
+<arg>reports/pics</arg>
+<arg>True</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.888" starttime="20160525 15:18:12.887"></status>
+</kw>
+<kw name="Open Browser" library="Selenium2LibraryStub">
+<arguments>
+<arg>about:blank</arg>
+<arg>browser=${BROWSER}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.888" starttime="20160525 15:18:12.888"></status>
+</kw>
+<kw name="Delete All Cookies" library="Selenium2LibraryStub">
+<status status="PASS" endtime="20160525 15:18:12.888" starttime="20160525 15:18:12.888"></status>
+</kw>
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.889" starttime="20160525 15:18:12.888"></status>
+</kw>
+<kw name="Location Should Contain" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.889" starttime="20160525 15:18:12.889"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2LibraryStub">
+<status status="PASS" endtime="20160525 15:18:12.890" starttime="20160525 15:18:12.889"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.890" starttime="20160525 15:18:12.886"></status>
+</kw>
+<kw name="As Tommy, login" library="BlogEntryKeywords">
+<kw name="Login" library="BlogEntryAPI">
+<arguments>
+<arg>&amp;{Account.${me}}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>login</arg>
+<arg>${Account.Login}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.891" starttime="20160525 15:18:12.891"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>password</arg>
+<arg>${Account.Password}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.892" starttime="20160525 15:18:12.891"></status>
+</kw>
+<kw name="Click Button" library="Selenium2LibraryStub">
+<arguments>
+<arg>LoginButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.892" starttime="20160525 15:18:12.892"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.892" starttime="20160525 15:18:12.892"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.892" starttime="20160525 15:18:12.890"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.892" starttime="20160525 15:18:12.890"></status>
+</kw>
+<kw name="As Tommy, create blog entry" library="BlogEntryKeywords">
+<kw name="Create Blog Entry" library="BlogEntryAPI">
+<assign>
+<var>${blog}</var>
+</assign>
+<kw name="Open Blog Entry Form" library="BlogEntryAPI">
+<assign>
+<var>${blog}</var>
+</assign>
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}blog/new_entry</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.894" starttime="20160525 15:18:12.894"></status>
+</kw>
+<kw name="Create Data Dict" library="BlogEntryUtils">
+<assign>
+<var>${blog}</var>
+</assign>
+<msg timestamp="20160525 15:18:12.894" level="INFO">{}</msg>
+<msg timestamp="20160525 15:18:12.894" level="INFO">${blog} = {}</msg>
+<status status="PASS" endtime="20160525 15:18:12.894" starttime="20160525 15:18:12.894"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.894" level="INFO">${blog} = {}</msg>
+<status status="PASS" endtime="20160525 15:18:12.895" starttime="20160525 15:18:12.893"></status>
+</kw>
+<kw name="Set Blog Entry Title" library="BlogEntryAPI">
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${blog.title}</var>
+</assign>
+<kw name="Set Textfield" library="BlogEntryAPI">
+<arguments>
+<arg>title</arg>
+<arg>${value}</arg>
+</arguments>
+<assign>
+<var>${value}</var>
+</assign>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${value}"=="NDEF"</arg>
+<arg>Generate Test Data</arg>
+<arg>value=text</arg>
+</arguments>
+<kw name="Generate Test Data" library="BlogEntryUtils">
+<arguments>
+<arg>value=text</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.897" level="INFO">${value} = JBBXL1PBX5</msg>
+<msg timestamp="20160525 15:18:12.897" level="INFO">value=JBBXL1PBX5 [test]</msg>
+<msg timestamp="20160525 15:18:12.897" level="INFO">['JBBXL1PBX5']</msg>
+<status status="PASS" endtime="20160525 15:18:12.897" starttime="20160525 15:18:12.897"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.897" starttime="20160525 15:18:12.895"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>${element}</arg>
+<arg>${value}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.898" starttime="20160525 15:18:12.898"></status>
+</kw>
+<kw name="Press Key" library="Selenium2LibraryStub">
+<arguments>
+<arg>${element}</arg>
+<arg>\t</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.898" starttime="20160525 15:18:12.898"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.899" level="INFO">${value} = JBBXL1PBX5</msg>
+<status status="PASS" endtime="20160525 15:18:12.899" starttime="20160525 15:18:12.895"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.899" level="INFO">${blog.title} = None</msg>
+<status status="PASS" endtime="20160525 15:18:12.899" starttime="20160525 15:18:12.895"></status>
+</kw>
+<kw name="Set Blog Entry Message" library="BlogEntryAPI">
+<arguments>
+<arg>${message}</arg>
+</arguments>
+<assign>
+<var>${blog.message}</var>
+</assign>
+<kw name="Set Textfield" library="BlogEntryAPI">
+<arguments>
+<arg>message</arg>
+<arg>${value}</arg>
+</arguments>
+<assign>
+<var>${value}</var>
+</assign>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${value}"=="NDEF"</arg>
+<arg>Generate Test Data</arg>
+<arg>value=text</arg>
+</arguments>
+<kw name="Generate Test Data" library="BlogEntryUtils">
+<arguments>
+<arg>value=text</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.902" level="INFO">${value} = IM7BNK4ZT5</msg>
+<msg timestamp="20160525 15:18:12.902" level="INFO">value=IM7BNK4ZT5 [test]</msg>
+<msg timestamp="20160525 15:18:12.902" level="INFO">['IM7BNK4ZT5']</msg>
+<status status="PASS" endtime="20160525 15:18:12.902" starttime="20160525 15:18:12.902"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.902" starttime="20160525 15:18:12.900"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>${element}</arg>
+<arg>${value}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.903" starttime="20160525 15:18:12.902"></status>
+</kw>
+<kw name="Press Key" library="Selenium2LibraryStub">
+<arguments>
+<arg>${element}</arg>
+<arg>\t</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.903" starttime="20160525 15:18:12.903"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.903" level="INFO">${value} = IM7BNK4ZT5</msg>
+<status status="PASS" endtime="20160525 15:18:12.903" starttime="20160525 15:18:12.900"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.904" level="INFO">${blog.message} = None</msg>
+<status status="PASS" endtime="20160525 15:18:12.904" starttime="20160525 15:18:12.899"></status>
+</kw>
+<kw name="Submit Blog Entry Form" library="BlogEntryAPI">
+<kw name="Click Button" library="Selenium2LibraryStub">
+<arguments>
+<arg>SubmitButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.904" starttime="20160525 15:18:12.904"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.904" starttime="20160525 15:18:12.904"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.905" level="INFO">${blog} = {'message': None, 'title': None}</msg>
+<status status="PASS" endtime="20160525 15:18:12.905" starttime="20160525 15:18:12.893"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${blog}</arg>
+</arguments>
+<msg timestamp="20160525 15:18:12.905" level="INFO">${blog} = {'message': None, 'title': None}</msg>
+<status status="PASS" endtime="20160525 15:18:12.905" starttime="20160525 15:18:12.905"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.905" starttime="20160525 15:18:12.893"></status>
+</kw>
+<kw name="As Tommy, logout" library="BlogEntryKeywords">
+<kw name="Logout" library="BlogEntryAPI">
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.906" starttime="20160525 15:18:12.906"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//button[@id="LogoutButton" or @id="LoginButton"]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.907" starttime="20160525 15:18:12.906"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<assign>
+<var>${is_logged_in}</var>
+</assign>
+<kw name="Element Should Be Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.907" starttime="20160525 15:18:12.907"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.907" level="INFO">${is_logged_in} = True</msg>
+<status status="PASS" endtime="20160525 15:18:12.907" starttime="20160525 15:18:12.907"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${is_logged_in}</arg>
+<arg>Click Element</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.908" starttime="20160525 15:18:12.908"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.908" starttime="20160525 15:18:12.908"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.908" starttime="20160525 15:18:12.906"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.908" starttime="20160525 15:18:12.905"></status>
+</kw>
+<kw name="As Gina, login" library="BlogEntryKeywords">
+<kw name="Login" library="BlogEntryAPI">
+<arguments>
+<arg>&amp;{Account.${me}}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>login</arg>
+<arg>${Account.Login}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.910" starttime="20160525 15:18:12.909"></status>
+</kw>
+<kw name="Input Text" library="Selenium2LibraryStub">
+<arguments>
+<arg>password</arg>
+<arg>${Account.Password}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.910" starttime="20160525 15:18:12.910"></status>
+</kw>
+<kw name="Click Button" library="Selenium2LibraryStub">
+<arguments>
+<arg>LoginButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.910" starttime="20160525 15:18:12.910"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.911" starttime="20160525 15:18:12.911"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.911" starttime="20160525 15:18:12.909"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.911" starttime="20160525 15:18:12.908"></status>
+</kw>
+<kw name="As Gina, verify blog entry" library="BlogEntryKeywords">
+<kw name="Go to Blog Page" library="BlogEntryAPI">
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}blog</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.912" starttime="20160525 15:18:12.912"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.913" starttime="20160525 15:18:12.912"></status>
+</kw>
+<kw name="Verify Blog Entry Title" library="BlogEntryAPI">
+<arguments>
+<arg>${blog.title}</arg>
+</arguments>
+<kw name="Page Should Contain Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//div[@id="title" and contains(text(), "${value}")]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.914" starttime="20160525 15:18:12.913"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.914" starttime="20160525 15:18:12.913"></status>
+</kw>
+<kw name="Verify Blog Entry Message" library="BlogEntryAPI">
+<arguments>
+<arg>${blog.message}</arg>
+</arguments>
+<kw name="Page Should Contain Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//div[@id="message" and contains(text(), "${value}")]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.915" starttime="20160525 15:18:12.915"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.915" starttime="20160525 15:18:12.914"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.915" starttime="20160525 15:18:12.911"></status>
+</kw>
+<kw name="As Gina, logout" library="BlogEntryKeywords">
+<kw name="Logout" library="BlogEntryAPI">
+<kw name="Go To" library="Selenium2LibraryStub">
+<arguments>
+<arg>${Url}</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.916" starttime="20160525 15:18:12.916"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>xpath=//button[@id="LogoutButton" or @id="LoginButton"]</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.917" starttime="20160525 15:18:12.917"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<assign>
+<var>${is_logged_in}</var>
+</assign>
+<kw name="Element Should Be Visible" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.918" starttime="20160525 15:18:12.918"></status>
+</kw>
+<msg timestamp="20160525 15:18:12.918" level="INFO">${is_logged_in} = True</msg>
+<status status="PASS" endtime="20160525 15:18:12.918" starttime="20160525 15:18:12.917"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${is_logged_in}</arg>
+<arg>Click Element</arg>
+<arg>LogoutButton</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2LibraryStub">
+<arguments>
+<arg>LogoutButton</arg>
+</arguments>
+<status status="PASS" endtime="20160525 15:18:12.919" starttime="20160525 15:18:12.918"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.919" starttime="20160525 15:18:12.918"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.919" starttime="20160525 15:18:12.916"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.919" starttime="20160525 15:18:12.915"></status>
+</kw>
+<kw type="teardown" name="Cleanup Browser" library="BlogEntryAPI">
+<kw name="Close Os Browsers" library="BlogEntryUtils">
+<status status="PASS" endtime="20160525 15:18:12.965" starttime="20160525 15:18:12.920"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:12.965" starttime="20160525 15:18:12.919"></status>
+</kw>
+<tags>
+<tag>GOOD</tag>
+</tags>
+<status status="PASS" endtime="20160525 15:18:12.965" critical="yes" starttime="20160525 15:18:12.886"></status>
+</test>
+<kw type="teardown" name="Cleanup Environment" library="BlogEntryAPI">
+<kw name="Cleanup Browser" library="BlogEntryAPI">
+<kw name="Close Os Browsers" library="BlogEntryUtils">
+<status status="PASS" endtime="20160525 15:18:13.014" starttime="20160525 15:18:12.966"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:13.014" starttime="20160525 15:18:12.966"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:13.015" starttime="20160525 15:18:12.965"></status>
+</kw>
+<status status="PASS" endtime="20160525 15:18:13.015" starttime="20160525 15:18:12.759"></status>
+</suite>
+<status status="PASS" endtime="20160525 15:18:13.015" starttime="20160525 15:18:12.728"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="2">GOOD</stat>
+<stat fail="0" pass="1">SMOKE</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Tests" pass="2">Tests</stat>
+<stat fail="0" id="s1-s1" name="BlogEntry" pass="2">Tests.BlogEntry</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
