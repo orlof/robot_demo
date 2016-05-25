@@ -1,8 +1,8 @@
 # README #
 
-This repository contains test automation source code for BlogEntry
+This repository contains Test Automation for BlogEntry example.
 
-    git clone somethign...
+    git clone git@github.com:orlof/robot_demo.git
 
 ## INSTALLATION ##
 
@@ -10,7 +10,7 @@ These installation instructions are for setting up a Windows test automation cli
 
 ### Prerequisites ###
 
-Firefox browser [latest]
+Install Firefox browser [latest]
 
     https://www.mozilla.org/en-US/firefox/new/
 
@@ -27,11 +27,17 @@ Required Python packages:
 1. Selenium 2 (WebDriver) library for Robot Framework [https://github.com/rtomac/robotframework-selenium2library](https://github.com/rtomac/robotframework-selenium2library)
 1. psutil
 
-All of the above can be installed with (use sudo if not in virtualenv)
+All of the above can be installed with pip:
+
+    pip install robotframework
+    pip install robotframework-selenium2library
+    pip install psutil
+
+Another way is to use pip's builtin requirements management:
 
     pip install -r requirements.txt
 
-CI test runner script (testrunner2x.*) will automatically install above mentioned python dependencies to local virtualenv. This process requires virtualenv to in CI-servers:
+CI test runner script (testrunner2x.*) will automatically install above mentioned python dependencies to local virtualenv. This process requires virtualenv installed in CI-servers:
 
     sudo pip install virtualenv
 
@@ -41,35 +47,6 @@ Git [latest]
 
 * When Windows Git installer asks about "Adjusting your PATH environment", select "Use Git from Windows Command Prompt"
 * Default is ok for all other options
-
-#### Configure SSH ####
-
-Generate new SSH key pair and copy the public key to BitBucket deployment keys. BitBucket deployment keys provide safe read-only access to repository.
-
-Generate a new key-pair with ssh-keygen. Start "Git Bash" (from Start menu) and run the following command with default values:
-
-    ssh-keygen
-
-Copy the following text to a file "~/.ssh/config":
-
-```
-#!text
-Host bitbucket
-    HostName altssh.bitbucket.org
-    Port 443
-    User git
-    IdentityFile ~/.ssh/id_rsa
-```
-
-Install the public key to BitBucket in
-
-    https://bitbucket.org/organization/project/admin/deploy-keys
-
-and Copy/Paste the whole contents of ~/.ssh/id_rsa.pub by selecting "Add Key".
-
-Clone the repository to your local machine:
-
-    git clone ssh://bitbucket/organization/project
 
 ## USAGE ##
 
@@ -84,7 +61,7 @@ Go to repository and run the test runner script
 
 ### Test Development (TODO) ###
 
-All trash files are purposedly left out from .gitignore to enable cleaning of repository with:
+All trash files are left out from .gitignore to enable cleaning of repository with:
 
     git clean -fd
 
@@ -102,11 +79,8 @@ This repository utilizes Gitflow branching model with following exceptions
     * Deployment acceptance test case
 * BUG
     * Reported bug causes the test case to FAIL. Add a link to the bug report as the first keyword
-
-        ```
-        Log  http://someurl...
-        ```
-
+    
+        ```Log  https://github.com/orlof/robot_demo/issues/1```
 * INDEV
     * Test in development
 
