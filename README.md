@@ -1,6 +1,8 @@
 # README #
 
-This repository contains Test Automation for BlogEntry example.
+This repository contains Test Automation for imaginary BlogEntry -web service. It demonstrates typical directory structure and configuration for Robot Framework test automation. Real Selenium library is replaced with Selenium2LibraryStub to make runnign the test easier.
+
+All code is available in github repository:
 
     git clone git@github.com:orlof/robot_demo.git
 
@@ -25,6 +27,7 @@ Required Python packages:
 
 1. Robot Framework [http://robotframework.org/](http://robotframework.org/)
 1. Selenium 2 (WebDriver) library for Robot Framework [https://github.com/rtomac/robotframework-selenium2library](https://github.com/rtomac/robotframework-selenium2library)
+       - Not used
 1. psutil
 
 All of the above can be installed with pip:
@@ -68,9 +71,7 @@ All trash files are left out from .gitignore to enable cleaning of repository wi
 
 ### Branching Model ###
 
-This repository utilizes Gitflow branching model with following exceptions
-
-* Master releases are not made and other test teams must use develop branch
+This repository utilizes [Gitflow](http://nvie.com/posts/a-successful-git-branching-model/) branching model with following exceptions
 
 ### Tagging model ###
 * GOOD
